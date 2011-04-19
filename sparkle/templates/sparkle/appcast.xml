@@ -1,0 +1,21 @@
+{% load markup %}<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"  xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>{{ application.name }}</title>
+        <link>http://{{ site.domain }}{% url sparkle_application_appcast application.id %}</link>
+        <description>Most recent changes with links to updates.</description>
+        <language>en</language>
+        {% for version in versions %}
+            <item>
+                <title>{{ version.title }}</title>
+			    <description><![CDATA[
+                    {{ version.release_notes|markdown }}
+                ]]>
+                </description>
+                <pubDate>{{ version.published|date:"r" }}</pubDate>
+                {% if version.minimum_system_version %}<sparkle:minimumSystemVersion>{{ version.minimum_system_version }}</sparkle:minimumSystemVersion>{% endif %}
+                <enclosure url="http://{{ site.domain }}{{ version.update.url }}" sparkle:version="{{ version.version }}" {% if version.short_version %}sparkle:shortVersionString="{{ version.short_version }}"{% endif %} length="{{ version.length }}" type="application/octet-stream" {% if version.dsa_signature %}sparkle:dsaSignature="{{ version.dsa_signature }}"{% endif %} />
+            </item>
+        {% endfor %}
+   </channel>
+</rss>
