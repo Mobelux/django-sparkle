@@ -22,7 +22,7 @@ class Version(models.Model):
     
     title = models.CharField(max_length=100)
     version = models.CharField(blank=True, null=True, max_length=10)
-    short_version = models.CharField(blank=True, null=True, max_length=10)
+    short_version = models.CharField(blank=True, null=True, max_length=50)
     dsa_signature = models.CharField(blank=True, null=True, max_length=80)
     length = models.CharField(blank=True, null=True, max_length=20)
     release_notes = models.TextField(blank=True, null=True)
