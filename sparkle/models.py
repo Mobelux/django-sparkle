@@ -72,10 +72,8 @@ class Version(models.Model):
                         total_size += os.path.getsize(fp)
                 
                 info_plist = os.path.join(start_path, 'Contents/Info.plist')
-                print '*'*80
-                print info_plist
+
                 if os.path.exists(info_plist):
-                    print 'FOUND'
                     plist = plistlib.readPlist(info_plist)
                     
                     if not self.version and 'CFBundleVersion' in plist:
