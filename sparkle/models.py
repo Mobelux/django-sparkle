@@ -40,7 +40,7 @@ class Version(models.Model):
         path = os.path.join(settings.MEDIA_ROOT, self.update.path)
         
         # if there is no dsa signature and a private key is provided in the settings
-        if not self.dsa_signature and SPARKLE_PRIVATE_KEY_PATH:
+        if not self.dsa_signature and SPARKLE_PRIVATE_KEY_PATH and os.path.exists(SPARKLE_PRIVATE_KEY_PATH):
             command = 'openssl dgst -sha1 -binary < "%s" | openssl dgst -dss1 -sign "%s" | openssl enc -base64' % (path, SPARKLE_PRIVATE_KEY_PATH)
             process = os.popen(command)
             self.dsa_signature = process.readline().strip()
