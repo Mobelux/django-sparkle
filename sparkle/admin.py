@@ -30,4 +30,9 @@ class SystemProfileReportAdmin(admin.ModelAdmin):
 
 admin.site.register(SystemProfileReport, SystemProfileReportAdmin)
 
-admin.site.register(SystemProfileReportRecord)
+class SystemProfileReportRecordAdmin(admin.ModelAdmin):
+    list_display = ('key', 'value')
+    list_filter = ('key',)
+
+admin.site.register(SystemProfileReportRecord, SystemProfileReportRecordAdmin)
+
