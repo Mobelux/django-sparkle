@@ -29,6 +29,7 @@ class Version(models.Model):
     minimum_system_version = models.CharField(blank=True, null=True, max_length=10)
     published = models.DateTimeField(auto_now_add=True)
     update = models.FileField(upload_to='sparkle/')
+    active = models.BooleanField(default=False)
 
     def __unicode__(self):
         return self.title
