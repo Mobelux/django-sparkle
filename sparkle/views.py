@@ -15,7 +15,7 @@ def appcast(request, application_id):
             record = SystemProfileReportRecord.objects.create(report=report, key=key, value=value)
     
     # get the latest versions
-    versions = Version.objects.filter(application__id=application_id).order_by('-published')
+    versions = Version.objects.filter(application__id=application_id, active=True).order_by('-published')
     
     # get the current site for the domain
     site = Site.objects.get_current()
