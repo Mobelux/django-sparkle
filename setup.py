@@ -13,7 +13,7 @@ setup(
     version = sparkle.__version__,
     description = 'Django-sparkle is a Django application to make it easy to publish updates for your mac application using sparkle',
     long_description = README,
-    url = 'http://github.com/jemerick/django-sparkle',
+    url = 'http://github.com/Mobelux/django-sparkle',
     author = 'Jason Emerick',
     author_email = 'jemerick@gmail.com',
     license = 'BSD',
