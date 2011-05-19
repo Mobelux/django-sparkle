@@ -14,7 +14,7 @@
                 </description>
                 <pubDate>{{ version.published|date:"r" }}</pubDate>
                 {% if version.minimum_system_version %}<sparkle:minimumSystemVersion>{{ version.minimum_system_version }}</sparkle:minimumSystemVersion>{% endif %}
-                <enclosure url="http://{{ site.domain }}{{ version.update.url }}" sparkle:version="{{ version.version }}" {% if version.short_version %}sparkle:shortVersionString="{{ version.short_version }}"{% endif %} length="{{ version.length }}" type="application/octet-stream" {% if version.dsa_signature %}sparkle:dsaSignature="{{ version.dsa_signature }}"{% endif %} />
+                <enclosure url="http:{{ version.update.url }}" sparkle:version="{{ version.version }}" {% if version.short_version %}sparkle:shortVersionString="{{ version.short_version }}"{% endif %} length="{{ version.length }}" type="application/octet-stream" {% if version.dsa_signature %}sparkle:dsaSignature="{{ version.dsa_signature }}"{% endif %} />
             </item>
         {% endfor %}
    </channel>
